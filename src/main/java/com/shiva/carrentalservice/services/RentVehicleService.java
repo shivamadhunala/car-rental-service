@@ -38,9 +38,9 @@ public class RentVehicleService implements SearchInventory {
        // Check if all of this vehicles can be rented, A vehicle cannot be rented if it is already rented or being rented
         for(Vehicle vehicle:vehicles) {
             if(this.lockVehicleProvider.isVehicleLocked(vehicle, from, to,user)) {
-                throw new VehicleTemporarilyUnavailableException("Vehicle: " + vehicle.getRegistrationId() + " is unavailable temporarily");
+                throw new VehicleTemporarilyUnavailableException("Vehicle: " + vehicle.getRegistrationId() + " is unavailable temporarily!");
             } else if(isVehicleBooked(vehicle, from, to)){
-                throw new VehiclePermanentlyUnavailableException("Vehicle: " + vehicle.getRegistrationId() + " is unavailable temporarily");
+                throw new VehiclePermanentlyUnavailableException("Vehicle: " + vehicle.getRegistrationId() + " is already booked!");
             }
         }
 
